@@ -6,7 +6,6 @@ accelerate
 bitsandbytes 
 langchain 
 sentence-transformers 
-faiss-gpu 
 openpyxl 
 pacmap 
 datasets 

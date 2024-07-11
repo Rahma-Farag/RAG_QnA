@@ -1,3 +1,4 @@
+PyMuPDF
 torch 
 transformers 
 chromadb 
@@ -11,4 +12,3 @@ pacmap
 datasets 
 langchain-community 
 ragatouille
-PyMuPDF

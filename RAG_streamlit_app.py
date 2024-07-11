@@ -1,7 +1,7 @@
 import streamlit as st
 from io import StringIO
 import fitz  # PyMuPDF
-from llm_prompt import get_answer, get_llm, get_text_chunks_langchain
+from llm_prompt import  *
 from langchain.document_loaders import UnstructuredURLLoader
 
 READER_LLM, RAG_PROMPT_TEMPLATE = get_llm(READER_MODEL_NAME = "stabilityai/stablelm-2-zephyr-1_6b")

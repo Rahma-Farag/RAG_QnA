@@ -1,0 +1,13 @@
+torch 
+transformers 
+chromadb 
+accelerate 
+bitsandbytes 
+langchain 
+sentence-transformers 
+faiss-gpu 
+openpyxl 
+pacmap 
+datasets 
+langchain-community 
+ragatouille

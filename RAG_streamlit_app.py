@@ -1,6 +1,11 @@
 import streamlit as st
 from io import StringIO
 import fitz  # PyMuPDF
+from llm_prompt import get_answer, get_llm, get_text_chunks_langchain
+from langchain.document_loaders import UnstructuredURLLoader
+
+READER_LLM, RAG_PROMPT_TEMPLATE = get_llm(READER_MODEL_NAME = "HuggingFaceH4/zephyr-7b-beta")
+
 
 # Set page title and layout
 st.set_page_config(page_title="Q&A App", layout="wide")
@@ -59,8 +64,8 @@ if question:
     st.subheader("Answer")
     # Placeholder where you will handle the answer logic
     if docs != None:
-      answer = get_answer(docs)
-      st.write("This is where the answer will be displayed.")
+      final_answer = get_answer(READER_LLM, RAG_PROMPT_TEMPLATE, docs, question)
+      st.write(final_answer)
 
 # Instructions or notes
 st.sidebar.info(

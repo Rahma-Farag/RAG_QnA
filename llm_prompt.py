@@ -4,8 +4,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from langchain.document_loaders import WikipediaLoader, OnlinePDFLoader, UnstructuredURLLoader
 
 from langchain.text_splitter import NLTKTextSplitter
-import nltk
-nltk.download('punkt')
+# import nltk
+# nltk.download('punkt')
 
 from langchain.embeddings import SentenceTransformerEmbeddings
 

@@ -61,7 +61,7 @@ def get_answer(READER_LLM, RAG_PROMPT_TEMPLATE, docs, question):
   return final_answer
 
 
-def get_llm(READER_MODEL_NAME = "HuggingFaceH4/zephyr-7b-beta"):
+def get_llm(READER_MODEL_NAME = "stabilityai/stablelm-2-zephyr-1_6b"):
 
     # bnb_config = BitsAndBytesConfig(
     #     load_in_4bit=True,

@@ -15,14 +15,14 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.docstore.document import Document
 
 def get_text_chunks_langchain(text):
-    text_splitter = CharacterTextSplitter(chunk_size=100, chunk_overlap=20)
-    docs = [Document(page_content=x) for x in text_splitter.split_text(text)]
+    text_splitter = CharacterTextSplitter(chunk_size=300, chunk_overlap=50)
+    docs = [Document(page_content=x, metadata={"document": i}) for i, x in enumerate(text_splitter.split_text(text))]
     return docs
-
+    
 def get_answer(READER_LLM, RAG_PROMPT_TEMPLATE, docs, question):
 
-  doc_content = [ doc.page_content for doc in docs]
-  metadatas = [ {"document":i} for i in range(len(docs))]
+  # doc_content = [ doc.page_content for doc in docs]
+  # metadatas = [ {"document":i} for i in range(len(docs))]
   # # splitter
   # text_splitter = NLTKTextSplitter(chunk_size=60, chunk_overlap=5)
   # tokens_chunks = text_splitter.create_documents(

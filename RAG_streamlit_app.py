@@ -3,8 +3,11 @@ from io import StringIO
 import fitz  # PyMuPDF
 from llm_prompt import  *
 from langchain.document_loaders import UnstructuredURLLoader
-import nltk
-nltk.download('punkt')
+# import nltk
+# nltk.download('punkt')
+from nltk.downloader import Downloader
+d = Downloader('https://raw.githubusercontent.com/nltk/nltk_data/1164703d436cad9e9cc082a59f9c9f10a7699ac8/index.xml')
+d.download('corpus')
 
 READER_LLM, RAG_PROMPT_TEMPLATE = get_llm(READER_MODEL_NAME = "stabilityai/stablelm-2-zephyr-1_6b")
 

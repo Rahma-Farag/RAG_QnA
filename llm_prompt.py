@@ -1,15 +1,15 @@
 from transformers import pipeline
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
-from langchain.document_loaders import WikipediaLoader, OnlinePDFLoader, UnstructuredURLLoader
+from langchain_community.document_loaders import WikipediaLoader, OnlinePDFLoader, UnstructuredURLLoader
 
 from langchain.text_splitter import NLTKTextSplitter
 # import nltk
 # nltk.download('punkt')
 
-from langchain.embeddings import SentenceTransformerEmbeddings
+from langchain_community.embeddings import SentenceTransformerEmbeddings
 
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.docstore.document import Document

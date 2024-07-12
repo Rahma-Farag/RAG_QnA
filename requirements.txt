@@ -12,3 +12,4 @@ datasets
 langchain-community 
 ragatouille
 unstructured
+nltk

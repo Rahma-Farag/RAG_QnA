@@ -15,7 +15,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain.docstore.document import Document
 
 def get_text_chunks_langchain(text):
-    text_splitter = CharacterTextSplitter(chunk_size=300, chunk_overlap=50)
+    text_splitter = CharacterTextSplitter(chunk_size=100, chunk_overlap=20)
     docs = [Document(page_content=x) for x in text_splitter.split_text(text)]
     return docs
 
@@ -23,12 +23,12 @@ def get_answer(READER_LLM, RAG_PROMPT_TEMPLATE, docs, question):
 
   doc_content = [ doc.page_content for doc in docs]
   metadatas = [ {"document":i} for i in range(len(docs))]
-  # splitter
-  text_splitter = NLTKTextSplitter(chunk_size=60, chunk_overlap=5)
-  tokens_chunks = text_splitter.create_documents(
-      doc_content,
-      metadatas=metadatas
-  )
+  # # splitter
+  # text_splitter = NLTKTextSplitter(chunk_size=60, chunk_overlap=5)
+  # tokens_chunks = text_splitter.create_documents(
+  #     doc_content,
+  #     metadatas=metadatas
+  # )
 
   # embeddings
   model_name = "sentence-transformers/all-MiniLM-L6-v2"
@@ -38,7 +38,7 @@ def get_answer(READER_LLM, RAG_PROMPT_TEMPLATE, docs, question):
   # vector database
   save_to_dir = "/content/wiki_chroma_db"
   vector_db = Chroma.from_documents(
-      tokens_chunks,
+      docs,
       embedding_llm,
       persist_directory=save_to_dir
   )

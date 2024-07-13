@@ -3,14 +3,8 @@ from io import StringIO
 import fitz  # PyMuPDF
 from llm_prompt import  *
 from langchain.document_loaders import UnstructuredURLLoader
-import nltk
-# nltk.download('punkt')
-# from nltk.downloader import Downloader
-# d = Downloader('https://raw.githubusercontent.com/nltk/nltk_data/1164703d436cad9e9cc082a59f9c9f10a7699ac8/index.xml')
-# d.download('corpus')
 
-READER_LLM, RAG_PROMPT_TEMPLATE = get_llm(READER_MODEL_NAME = "stabilityai/stablelm-2-zephyr-1_6b")
-
+RAG_PROMPT_TEMPLATE, embedding_llm = get_prompt_embeddingllm()
 
 # Set page title and layout
 st.set_page_config(page_title="Q&A App", layout="wide")
@@ -68,8 +62,9 @@ question = st.text_input("Enter your question:")
 if question:
     st.subheader("Answer")
     # Placeholder where you will handle the answer logic
-    if docs != None:
-      final_answer = get_answer(READER_LLM, RAG_PROMPT_TEMPLATE, docs, question)
+    if docs != None and docs != []:
+      # final_answer = get_answer(READER_LLM, RAG_PROMPT_TEMPLATE, docs, question)
+      final_answer = get_answer(embedding_llm, RAG_PROMPT_TEMPLATE, docs, question)
       st.write(final_answer)
 
 # Instructions or notes

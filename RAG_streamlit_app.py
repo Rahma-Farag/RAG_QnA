@@ -3,7 +3,9 @@ from io import StringIO
 import fitz  # PyMuPDF
 from llm_prompt import  *
 from langchain.document_loaders import UnstructuredURLLoader
-
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 RAG_PROMPT_TEMPLATE, embedding_llm = get_prompt_embeddingllm()
 
 # Set page title and layout

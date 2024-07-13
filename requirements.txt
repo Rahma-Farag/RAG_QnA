@@ -1,4 +1,3 @@
-pip
 PyMuPDF
 torch 
 transformers 
@@ -14,4 +13,4 @@ langchain-community
 ragatouille
 unstructured
 nltk
-sqlite3
+pysqlite3-binary

@@ -6,6 +6,7 @@ from langchain.vectorstores import Chroma
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.docstore.document import Document
 from transformers import AutoTokenizer
+from huggingface_hub import InferenceClient
 
 def get_prompt_embeddingllm():
   model_id = "HuggingFaceH4/zephyr-7b-beta"

@@ -20,8 +20,11 @@ st.sidebar.header("Upload Document or Enter URL")
 # Option to upload a document
 uploaded_file = st.sidebar.file_uploader("Choose a document...", type=["txt", "pdf"])
 
+# Option to paste text
+pasted_text = st.sidebar.text_area("Paste your text here")
+
 # Option to input a URL
-url = st.sidebar.text_input("Enter a URL")
+# url = st.sidebar.text_input("Enter a URL")
 
 # Display the uploaded document or URL
 document_content = None
@@ -46,13 +49,10 @@ if uploaded_file is not None:
         docs = get_text_chunks_langchain(document_content)
     else:
         st.warning("Only .txt and .pdf files are supported at this time.")
-elif url:
-    st.subheader("Entered URL")
-    st.write(f"URL: {url}")
-
-    llm_loader = UnstructuredURLLoader(urls=[url])
-    docs = llm_loader.load()
-
+elif pasted_text:
+    st.subheader("Pasted Text")
+    st.text_area("Pasted content:", pasted_text, height=300)
+    docs = get_text_chunks_langchain(pasted_text)
 else:
   docs = None
 

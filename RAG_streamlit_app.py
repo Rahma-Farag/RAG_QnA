@@ -72,7 +72,7 @@ if question:
 # Instructions or notes
 st.sidebar.info(
     """
-    Please upload a document or enter a URL for the content you want to ask questions about.
+    Please upload a document or enter the content you want to ask questions about.
     Then, enter your question in the main area.
     """
 )
